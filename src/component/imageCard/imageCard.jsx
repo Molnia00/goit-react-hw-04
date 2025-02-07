@@ -1,6 +1,9 @@
-function imageCard(){
-   
-    
+export const ImageCard = ({url, alt }) => {
+    return (
+        <>
+            <img src={url} alt={alt}></img>
+        </>
+   )
 }
 
 
@@ -9,5 +12,3 @@ function imageCard(){
 
 
 
-
-export default imageCard

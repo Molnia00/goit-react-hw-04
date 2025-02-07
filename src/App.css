@@ -1,9 +1,14 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
+  margin:auto;
   padding: 2rem;
   text-align: center;
 }
+form{
+margin-left: auto;
+  margin-right: auto;
+}
+
 
 .logo {
   height: 6em;

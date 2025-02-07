@@ -13,6 +13,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+input{
+  border-radius: 8px;
+    border: 1px solid #646cff;
+    background-color: #fbf9f9;
+    height: 35px;
+    width: auto;
+    margin-right: 10px;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -63,6 +72,7 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    border: 1px solid #646cff;
+    background-color: #9a9595;
   }
 }

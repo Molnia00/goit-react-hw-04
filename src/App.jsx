@@ -1,5 +1,5 @@
-import searchBox from './component/searchBox/searchBox'
-import imageGallery from './component/imageGallery/imageGallery'
+import SearchBox from './component/searchBox/searchBox'
+import ImageGallery from './component/imageGallery/imageGallery'
 import './App.css'
 
 
@@ -7,10 +7,13 @@ import './App.css'
 
 
 function App() {
+
+
+
+  
   return (
     <>
-    <searchBox />
-      <imageGallery />
+    <SearchBox />
     </>
   )
 }
