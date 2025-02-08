@@ -5,8 +5,8 @@ function ImageGallery({ iteams }) {
     return(
     <>
         <ul>
-            {iteams.map((item, index)=> (
-                <li key={`${item.id}-${index}`}>
+            {iteams.map((item)=> (
+                <li key={`${item.id}`}>
                     <ImageCard
                         url={item.urls.small}
                         alt={item.alt_description}
