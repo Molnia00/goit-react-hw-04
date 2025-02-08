@@ -3,7 +3,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 function SearchBox({onSubmit}) {
     
-  const [SerchInf, setSearchInf] = useState('');
+  const [serchInf, setSearchInf] = useState('');
   
   
   function handleChange(event) {
@@ -14,12 +14,12 @@ function SearchBox({onSubmit}) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (SerchInf.trim() === '') {
+    if (serchInf.trim() === '') {
       toast.error('Please enter a correct value to search for!' );
             return;
     }
         setSearchInf('');
-        onSubmit(SerchInf);
+        onSubmit(serchInf);
     };
   return (
     <>
@@ -28,6 +28,7 @@ function SearchBox({onSubmit}) {
         <form onSubmit={handleSubmit}>
           
           <input
+            value={serchInf}
             type="text"
             placeholder="Search "
             onChange={handleChange}
