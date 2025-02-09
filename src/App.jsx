@@ -1,4 +1,3 @@
-
 import { useEffect , useState} from "react"
 import axios from "axios"
 import SearchBox from './component/searchBox/searchBox'
@@ -14,21 +13,20 @@ function App() {
   const [photo, setPhoto] = useState([])
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
-   const [serchInf, setSearchInf] = useState('');
-
-  //""
+  
 
   function onSubmit(newQ) {
     setQuery(newQ)
+setPhoto([])
+setPage(1)
   }
   
   useEffect(() => {
      if (!query.trim()) return;
-    setQuery(serchInf)
-
+   
     try {
 
-      const fetchPhotos = async (query, page) => {
+      const fetchPhotos = async () => {
       
         const response = await axios.get('https://api.unsplash.com/search/photos', {
           params: {
@@ -53,8 +51,8 @@ function App() {
   
   return (
     <>
-      <SearchBox serchInf={serchInf}
-        setSearchInf={setSearchInf}
+      <SearchBox 
+    
         onSubmit={onSubmit}
       />
 

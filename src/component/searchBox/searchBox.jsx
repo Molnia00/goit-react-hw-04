@@ -1,9 +1,8 @@
-
+import { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-
-function SearchBox({serchInf, setSearchInf, onSubmit}) {
+function SearchBox({ onSubmit}) {
     
-
+ const [serchInf, setSearchInf] = useState('');
   function handleChange(event) {
     setSearchInf(event.target.value);
     
@@ -16,8 +15,9 @@ function SearchBox({serchInf, setSearchInf, onSubmit}) {
       toast.error('Please enter a correct value to search for!' );
             return;
     }
+onSubmit(serchInf);
         setSearchInf('');
-        onSubmit(serchInf);
+        
     };
   return (
     <>
