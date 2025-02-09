@@ -18,8 +18,12 @@ function App() {
 
   //""
 
+  function onSubmit(newQ) {
+    setQuery(newQ)
+  }
   
   useEffect(() => {
+     if (!query.trim()) return;
     setQuery(serchInf)
 
     const fetchPhotos = async (query, page) => {
@@ -33,7 +37,7 @@ function App() {
         }
       }); 
 
-      setPhoto(response.data)
+      setPhoto(response.data.results)
     }; fetchPhotos()
     
     console.log(photo)
@@ -44,6 +48,7 @@ function App() {
     <>
       <SearchBox serchInf={serchInf}
         setSearchInf={setSearchInf}
+        onSubmit={onSubmit}
       />
 
       <ImageGallery iteams={photo} />
