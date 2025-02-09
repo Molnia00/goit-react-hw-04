@@ -26,22 +26,29 @@ function App() {
      if (!query.trim()) return;
     setQuery(serchInf)
 
-    const fetchPhotos = async (query, page) => {
-      
-      const  response = await axios.get('https://api.unsplash.com/search/photos', {
-        params: {
-          query: query,
-          client_id: YOUR_ACCESS_KEY,
-          per_page: 10,
-          page: page,
-        }
-      }); 
+    try {
 
-      setPhoto(response.data.results)
-    }; fetchPhotos()
+      const fetchPhotos = async (query, page) => {
+      
+        const response = await axios.get('https://api.unsplash.com/search/photos', {
+          params: {
+            query: query,
+            client_id: YOUR_ACCESS_KEY,
+            per_page: 10,
+            page: page,
+          }
+        });
+
+        setPhoto(response.data.results)
+      }; fetchPhotos()
     
-    console.log(photo)
-  },[query, page])
+      console.log(photo)
+    }
+     catch {
+      console.log("Error fetching images:");
+     }
+    }
+  ,[query, page])
 
   
   return (
