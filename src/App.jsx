@@ -14,13 +14,17 @@ function App() {
   const [photo, setPhoto] = useState([])
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
+   const [serchInf, setSearchInf] = useState('');
 
   //""
 
   
   useEffect(() => {
+    setQuery(serchInf)
+
     const fetchPhotos = async (query, page) => {
-      const  response = await axios.get("https://api.unsplash.com/search/photos", {
+      
+      const  response = await axios.get('https://api.unsplash.com/search/photos', {
         params: {
           query: query,
           client_id: YOUR_ACCESS_KEY,
@@ -28,16 +32,21 @@ function App() {
           page: page,
         }
       }); 
-      
-       console.log(response.data);
+
+      setPhoto(response.data)
     }; fetchPhotos()
-  },[])
+    
+    console.log(photo)
+  },[query, page])
 
   
   return (
     <>
-      <SearchBox />
-      <ImageGallery iteams={ photo} />
+      <SearchBox serchInf={serchInf}
+        setSearchInf={setSearchInf}
+      />
+
+      <ImageGallery iteams={photo} />
       
     </>
   )

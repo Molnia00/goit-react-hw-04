@@ -1,11 +1,9 @@
-import { useState } from "react";
+
 import toast, { Toaster } from 'react-hot-toast';
 
-function SearchBox({onSubmit}) {
+function SearchBox({serchInf, setSearchInf, onSubmit}) {
     
-  const [serchInf, setSearchInf] = useState('');
-  
-  
+
   function handleChange(event) {
     setSearchInf(event.target.value);
     
