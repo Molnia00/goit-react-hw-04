@@ -5,8 +5,9 @@ import ImageGallery from './component/imageGallery/imageGallery'
 import './App.css'
 import LoaderBeing from './component/loader/loader'
 import LoadMoreBtn from './component/loadMore/btnLoadMore'
-
-
+import ImageModal from "./modalka/modalWindow"
+import ReactModal from 'react-modal';
+ReactModal.setAppElement('#root');
 
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   function onSubmit(newQ) {
     setQuery(newQ)
@@ -56,17 +59,34 @@ function App() {
   }
   ,[query, page])
 
-  
+  const modalImage = image => {
+    setSelectedImage(image);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedImage(null);
+  };
+
+
+
+
+
   return (
     <>
       <SearchBox
         onSubmit={onSubmit}/>
-      
-      <ImageGallery iteams={photo} />
+      <ImageGallery iteams={photo} modalImage={modalImage} />
       {isLoading && <LoaderBeing />}
       {photo.length > 0 &&
       <LoadMoreBtn
-      onNextPage={onNextPage}/>}
+          onNextPage={onNextPage} />}
+      <ImageModal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        image={selectedImage}
+      />
     </>
   )
 
