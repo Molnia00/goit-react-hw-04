@@ -3,6 +3,7 @@ import axios from "axios"
 import SearchBox from './component/searchBox/searchBox'
 import ImageGallery from './component/imageGallery/imageGallery'
 import './App.css'
+import LoaderBeing from './component/loader/loader'
 
 
 
@@ -13,19 +14,20 @@ function App() {
   const [photo, setPhoto] = useState([])
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
+  const [isLoading , setIsLoading] = useState(false)
   
 
   function onSubmit(newQ) {
     setQuery(newQ)
-setPhoto([])
-setPage(1)
+    setPhoto([])
+    setPage(1)
   }
   
   useEffect(() => {
      if (!query.trim()) return;
    
     try {
-
+      setIsLoading(true)
       const fetchPhotos = async () => {
       
         const response = await axios.get('https://api.unsplash.com/search/photos', {
@@ -44,21 +46,22 @@ setPage(1)
     }
      catch {
       console.log("Error fetching images:");
-     }
+    }
+    finally {
+      setIsLoading(false)
+    }
     }
   ,[query, page])
 
   
   return (
-    <>
-      <SearchBox 
-    
-        onSubmit={onSubmit}
-      />
-
-      <ImageGallery iteams={photo} />
+    <div>
+      <SearchBox
+        onSubmit={onSubmit}/>
       
-    </>
+      <ImageGallery iteams={photo} />
+     {isLoading && <LoaderBeing/>}
+    </div>
   )
 
 }
