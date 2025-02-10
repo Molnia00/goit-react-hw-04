@@ -1,0 +1,25 @@
+.photoList{
+  
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+      align-items: center;
+      padding: 0;
+      margin-left: auto;
+      margin-right: auto;
+      width: 900px;
+    
+}
+
+.photoLi{
+        display: inline-block;
+        border: 2px solid;
+        border-radius: 7px;
+        border-color: transparent;
+        width: 250px;
+        height: 270px;
+        overflow: hidden;
+        position: relative;
+    }

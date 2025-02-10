@@ -1,12 +1,12 @@
 import { ImageCard } from '../imageCard/imageCard';
-
+import s from './imageGallery.module.css'
 
 function ImageGallery({ iteams }) {
     return(
     <>
-        <ul>
+        <ul className={s.photoList}>
             {iteams.map((item)=> (
-                <li key={`${item.id}`}>
+                <li className={s.photoLi} key={`${item.id}`}>
                     <ImageCard
                         url={item.urls.small}
                         alt={item.alt_description}
