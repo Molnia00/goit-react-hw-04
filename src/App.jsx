@@ -77,7 +77,8 @@ function App() {
     <>
       <SearchBox
         onSubmit={onSubmit}/>
-      <ImageGallery iteams={photo} modalImage={modalImage} />
+      <ImageGallery iteams={photo}
+        modalImage={modalImage} />
       {isLoading && <LoaderBeing />}
       {photo.length > 0 &&
       <LoadMoreBtn

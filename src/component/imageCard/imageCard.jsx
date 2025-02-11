@@ -1,7 +1,12 @@
-export const ImageCard = ({url, alt }) => {
+export const ImageCard = ({url, alt , modalImage}) => {
     return (
         <>
-            <img src={url} alt={alt}></img>
+            <img
+                onClick={modalImage}
+                src={url}
+                alt={alt}>
+                
+            </img>
         </>
    )
 }
