@@ -7,7 +7,7 @@ import LoaderBeing from './component/loader/loader'
 import LoadMoreBtn from './component/loadMore/btnLoadMore'
 import ImageModal from './modalka/modalWindow'
 import ReactModal from 'react-modal'
-import errorMsg from './component/errorMessage/errorMsg'
+import ErrorMsg from './component/errorMessage/errorMsg'
 ReactModal.setAppElement('#root');
 
 
@@ -25,6 +25,7 @@ function App() {
     setQuery(newQ)
     setPhoto([])
     setPage(1)
+    setErrorMsg(false)
   }
   
   function onNextPage() {
@@ -53,7 +54,6 @@ function App() {
         setPhoto((prevPhoto) => [...prevPhoto, ...response.data.results]); 
       } catch {
         setErrorMsg(true)
-        console.log("Error fetching images:");
       } finally {
         setIsLoading(false)
       }
@@ -86,7 +86,7 @@ function App() {
       {photo.length > 0 &&
       <LoadMoreBtn
           onNextPage={onNextPage} />}
-      {errorMsgState && <errorMsg/>}
+      {errorMsgState && <ErrorMsg/>}
       <ImageModal
         isOpen={isModalOpen}
         onRequestClose={closeModal}

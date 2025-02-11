@@ -1,4 +1,4 @@
-function errorMsg() {
+function ErrorMsg() {
     return (
         <>
             <h2>Please, try again later...</h2>
@@ -6,4 +6,4 @@ function errorMsg() {
     )
 }
  
-export default errorMsg
+export default ErrorMsg
