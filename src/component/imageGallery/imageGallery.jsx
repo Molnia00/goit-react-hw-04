@@ -9,6 +9,7 @@ function ImageGallery({ iteams , modalImage}) {
                 <li className={s.photoLi} key={`${item.id}`}>
                     <ImageCard
                         modalImage={modalImage}
+                        regular={item.urls.regular}
                         url={item.urls.small}
                         alt={item.alt_description}
                     />

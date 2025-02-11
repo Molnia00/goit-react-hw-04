@@ -5,8 +5,9 @@ import ImageGallery from './component/imageGallery/imageGallery'
 import './App.css'
 import LoaderBeing from './component/loader/loader'
 import LoadMoreBtn from './component/loadMore/btnLoadMore'
-import ImageModal from "./modalka/modalWindow"
-import ReactModal from 'react-modal';
+import ImageModal from './modalka/modalWindow'
+import ReactModal from 'react-modal'
+import errorMsg from './component/errorMessage/errorMsg'
 ReactModal.setAppElement('#root');
 
 
@@ -18,6 +19,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [ errorMsgState, setErrorMsg] = useState(false);
 
   function onSubmit(newQ) {
     setQuery(newQ)
@@ -50,6 +52,7 @@ function App() {
 
         setPhoto((prevPhoto) => [...prevPhoto, ...response.data.results]); 
       } catch {
+        setErrorMsg(true)
         console.log("Error fetching images:");
       } finally {
         setIsLoading(false)
@@ -83,11 +86,13 @@ function App() {
       {photo.length > 0 &&
       <LoadMoreBtn
           onNextPage={onNextPage} />}
+      {errorMsgState && <errorMsg/>}
       <ImageModal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
         image={selectedImage}
       />
+
     </>
   )
 

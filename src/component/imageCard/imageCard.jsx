@@ -1,8 +1,8 @@
-export const ImageCard = ({url, alt , modalImage}) => {
+export const ImageCard = ({url, alt , modalImage, regular}) => {
     return (
         <>
             <img
-                onClick={() => modalImage(url)}
+                onClick={() => modalImage(regular)}
                 src={url}
                 alt={alt}>
                 
