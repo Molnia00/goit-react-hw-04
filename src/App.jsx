@@ -1,13 +1,13 @@
 import { useEffect , useState} from "react"
 import axios from "axios"
-import SearchBox from './component/searchBox/searchBox'
-import ImageGallery from './component/imageGallery/imageGallery'
+import SearchBox from './components/searchBox/searchBox'
+import ImageGallery from './components/imageGallery/imageGallery'
 import './App.css'
-import LoaderBeing from './component/loader/loader'
-import LoadMoreBtn from './component/loadMore/btnLoadMore'
-import ImageModal from './modalka/modalWindow'
+import LoaderBeing from './components/loader/loader'
+import LoadMoreBtn from './components/loadMore/btnLoadMore'
+import ImageModal from './components/modalka/modalWindow'
 import ReactModal from 'react-modal'
-import ErrorMsg from './component/errorMessage/errorMsg'
+import ErrorMsg from './components/errorMessage/errorMsg'
 ReactModal.setAppElement('#root');
 
 
